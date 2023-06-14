@@ -1,11 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	conferenceName := "Go Conference"
 	const conferenceTickets uint = 50
 	var remainingTickets uint = 50
+	var bookings []string
 
 	fmt.Printf("Welcome to %s booking application\n", conferenceName)
 	fmt.Printf("we have total of %v tickets, and %v are still available.\n", conferenceTickets, remainingTickets)
@@ -13,7 +17,6 @@ func main() {
 
 	for {
 
-		var booking []string
 		var firstName string
 		var lastName string
 		var email string
@@ -29,7 +32,7 @@ func main() {
 		fmt.Println("Number of Tickets: ")
 		fmt.Scan(&userTickets)
 
-		booking = append(booking, firstName+" "+lastName)
+		bookings = append(bookings, firstName+" "+lastName)
 
 		fmt.Printf("User %v booked %v tickets.\n", firstName, userTickets)
 
@@ -39,7 +42,12 @@ func main() {
 
 		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 
-		fmt.Printf("Booking  %v\n", booking)
+		firstNames := []string{}
+
+		for _, booking := range bookings {
+			firstNames = append(firstNames, strings.Split(booking, " ")[0])
+		}
+		fmt.Printf("Booking  %v\n", firstNames)
 
 	}
 
