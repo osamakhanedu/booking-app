@@ -1,6 +1,7 @@
 package main
 
 import (
+	"booking-app/helper"
 	"fmt"
 )
 
@@ -10,7 +11,7 @@ func main() {
 	var remainingTickets uint = 50
 	var bookings []string
 
-	greeting(conferenceName, int(conferenceTickets), int(remainingTickets))
+	helper.Greeting(conferenceName, int(conferenceTickets), int(remainingTickets))
 
 	for {
 
@@ -20,8 +21,8 @@ func main() {
 
 		}
 
-		firstName, lastName, email, userTickets := getUserInput()
-		isValidName, isValidEmail, isValidTicketNumber := validateInput(firstName, lastName, email, userTickets, remainingTickets)
+		firstName, lastName, email, userTickets := helper.GetUserInput()
+		isValidName, isValidEmail, isValidTicketNumber := helper.ValidateInput(firstName, lastName, email, userTickets, remainingTickets)
 
 		if !isValidName || !isValidEmail || !isValidTicketNumber {
 			fmt.Println("You have enter invalid input")
@@ -43,7 +44,7 @@ func main() {
 
 		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 
-		firstNames := getName(bookings)
+		firstNames := helper.GetName(bookings)
 
 		fmt.Printf("Booking  %v\n", firstNames)
 

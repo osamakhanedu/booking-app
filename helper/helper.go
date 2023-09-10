@@ -1,4 +1,4 @@
-package main
+package helper
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
   Validate input
 */
 
-func validateInput(firstName string, lastName string, email string, userTickets uint, remainingTickets uint) (bool, bool, bool) {
+func ValidateInput(firstName string, lastName string, email string, userTickets uint, remainingTickets uint) (bool, bool, bool) {
 	isValidName := len(firstName) >= 2 && len(lastName) >= 2
 	isValidEmail := strings.Contains(email, "@")
 	isValidTicketNumber := userTickets > 0 && userTickets > remainingTickets
@@ -18,7 +18,7 @@ func validateInput(firstName string, lastName string, email string, userTickets 
 }
 
 // Show Greeting messages
-func greeting(conferenceName string, conferenceTickets int, remainingTickets int) {
+func Greeting(conferenceName string, conferenceTickets int, remainingTickets int) {
 
 	fmt.Printf("Welcome to %s booking application\n", conferenceName)
 	fmt.Printf("we have total of %v tickets, and %v are still available.\n", conferenceTickets, remainingTickets)
@@ -28,7 +28,7 @@ func greeting(conferenceName string, conferenceTickets int, remainingTickets int
 
 
 // get firstName from slice
-func getName(bookings []string) []string {
+func GetName(bookings []string) []string {
 	firstNames := []string{}
 
 	for _, booking := range bookings {
@@ -39,7 +39,7 @@ func getName(bookings []string) []string {
 }
 
 // Get user input
-func getUserInput() (string, string, string, uint) {
+func GetUserInput() (string, string, string, uint) {
 	var firstName string
 	var lastName string
 	var email string
